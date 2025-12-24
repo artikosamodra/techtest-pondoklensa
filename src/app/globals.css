@@ -2,7 +2,7 @@
 
 @theme {
   --color-brand-brown-100: #c8964e;
-  --color-brand-brown-200: #c8a34e;
+  --color-brand-brown-200: #b08446;
 
   --color-brand-green-100: #24d173;
   --color-brand-green-200: #29b96b;
@@ -15,6 +15,7 @@
 
   --color-brand-gray-100: #e1e6eb;
   --color-brand-gray-200: #f0f5f5;
+  --color-brand-gray-300: #383838
 
   --color-brand-yellow-100: #f5d41d;
   --color-brand-yellow-200: #ecbf3e;

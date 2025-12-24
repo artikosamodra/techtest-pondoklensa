@@ -1,12 +1,27 @@
-import Container from '@/components/utils/Container'
-import React from 'react'
+import ProductDetail from "@/components/organisms/ProductDetail";
+import Container from "@/components/utils/Container";
+import { products } from "@/libs/data/products";
+import { notFound } from "next/navigation";
+import React from "react";
 
-export default function ProductDetailPage() {
+interface ProductDetailPageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function ProductDetailPage({
+  params,
+}: ProductDetailPageProps) {
+  const { slug } = await params;
+  const product = products.find((p) => p.slug === slug);
+
+  if (!product) {
+    notFound();
+  }
+
   return (
-<Container>
-    <h1>Product Detail</h1>
-
-    
-</Container>
-  )
+    <Container containerClass="h-full">
+      <h1>Product Detail</h1>
+      <ProductDetail product={product} />
+    </Container>
+  );
 }

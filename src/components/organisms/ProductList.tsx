@@ -3,6 +3,7 @@ import { products } from "@/libs/data/products";
 import React, { useEffect, useState } from "react";
 import ProductListCard from "../molecules/ProductListCard";
 import { useInView } from "react-intersection-observer";
+import Link from "next/link";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -26,17 +27,18 @@ const ProductList = () => {
     <div>
       <div className="grid grid-cols-5 gap-y-5 gap-x-1">
         {limitProducts.map((product) => (
-          <ProductListCard
-            key={product.id}
-            src={
-              product.images?.[0]?.image
-                ? `/images/products/${product.images[0].image}`
-                : "/images/products/_default.jpg"
-            }
-            title={product.title}
-            priceday={product.price}
-            pricedays={product.price * 2}
-          />
+          <Link href={`/product-detail/${product.slug}`} key={product.id}>
+            <ProductListCard
+              src={
+                product.images?.[0]?.image
+                  ? `/images/products/${product.images[0].image}`
+                  : "/images/products/_default.jpg"
+              }
+              title={product.title}
+              priceday={product.price}
+              pricedays={product.price * 2}
+            />
+          </Link>
         ))}
       </div>
 
