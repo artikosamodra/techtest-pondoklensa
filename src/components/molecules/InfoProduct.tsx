@@ -15,6 +15,10 @@ import Link from "next/link";
 export type ProductImage = {
   id: string;
   image: string;
+  product_id?: string;
+  order?: number;
+  created_at?: string;
+  updated_at?: string;
 };
 
 export type ProductType = {
@@ -24,20 +28,26 @@ export type ProductType = {
   slug: string;
   images: ProductImage[];
   manufacturer?: {
-    name: string;
+    id?: string;
+    name: string; // Pastikan ini ada
+    slug?: string;
   };
   default_package?: {
     id: string;
-    components: any[];
+    name: string;
+    components: {
+      id: string;
+      product: {
+        name: string;
+        image: {
+          image: string;
+        };
+      };
+    }[];
   };
 };
 
-const InfoProduct = ({
-  name,
-  manufacturer,
-  price,
-  slug,
-}: Partial<ProductType>) => {
+const InfoProduct = ({ name, manufacturer, price, slug }: ProductType) => {
   const [view, setView] = useState(false);
   const handleClick = () => {
     setView(true);
