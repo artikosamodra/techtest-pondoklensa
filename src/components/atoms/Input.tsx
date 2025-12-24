@@ -8,7 +8,7 @@ import {
 
 type InputProps<T extends FieldValues> = {
   id: Path<T>;
-  label: string;
+  label?: string;
   type?: string;
   register?: UseFormRegister<T>;
   errors?: FieldErrors<T>;

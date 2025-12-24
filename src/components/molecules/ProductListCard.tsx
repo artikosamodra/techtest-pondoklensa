@@ -2,11 +2,11 @@ import { formatIDR } from "@/libs/utils/format";
 import Image from "next/image";
 import React from "react";
 
-type ProductListCardProps = {
+export type ProductListCardProps = {
   src: string;
   title?: string;
-  priceday: number;
-  pricedays: number;
+  priceday?: number;
+  pricedays?: number;
 };
 
 const ProductListCard = ({

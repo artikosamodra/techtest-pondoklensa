@@ -12,16 +12,32 @@ import Pricing from "../atoms/Pricing";
 import PriceChart from "./PriceChart";
 import Link from "next/link";
 
-export type DetailCardProps = {
+export type ProductImage = {
   id: string;
-  title: string;
-  name: string;
-  manufacturer?: string;
-  price: number;
-  slug: string;
+  image: string;
 };
 
-const InfoProduct = ({ name, manufacturer, price, slug }: DetailCardProps) => {
+export type ProductType = {
+  id: string;
+  name: string;
+  price: number;
+  slug: string;
+  images: ProductImage[];
+  manufacturer?: {
+    name: string;
+  };
+  default_package?: {
+    id: string;
+    components: any[];
+  };
+};
+
+const InfoProduct = ({
+  name,
+  manufacturer,
+  price,
+  slug,
+}: Partial<ProductType>) => {
   const [view, setView] = useState(false);
   const handleClick = () => {
     setView(true);
@@ -30,14 +46,14 @@ const InfoProduct = ({ name, manufacturer, price, slug }: DetailCardProps) => {
     setView(false);
   };
   return (
-    <div className="space-y-4 relatice">
+    <div className="space-y-4 relative">
       {/* Title and Brand */}
       <div className="p-5 border-b border-gray-300">
         <h1 className="font-bold text-xl">{name}</h1>
         <p className="text-sm">
           Brand{" "}
           <span className="text-brand-brown-100 font-medium">
-            {manufacturer}
+            {manufacturer?.name || "No Brand"}
           </span>{" "}
         </p>
       </div>

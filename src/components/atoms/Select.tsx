@@ -13,7 +13,7 @@ type Option = {
 
 type SelectProps<T extends FieldValues> = {
   id: Path<T>;
-  label: string;
+  label?: string;
   options: Option[];
   register?: UseFormRegister<T>;
   errors?: FieldErrors<T>;
@@ -35,7 +35,7 @@ const Select = <T extends FieldValues>({
   const fieldError = errors?.[id];
 
   return (
-    <div className="mb-4">
+    <div className="mb-4 w-full">
       <label htmlFor={id} className={`${classLabel} font-medium block mb-1`}>
         {label}
       </label>
