@@ -1,14 +1,15 @@
+"use client";
 import {
   CircleIcon,
   ListIcon,
   QrCodeIcon,
-  WarningCircleIcon,
 } from "@phosphor-icons/react/dist/ssr";
-import React from "react";
+import React, { useState } from "react";
 import Button from "../atoms/Button";
 import { formatIDR } from "@/libs/utils/format";
 import Available from "../atoms/Available";
 import Pricing from "../atoms/Pricing";
+import PriceChart from "./PriceChart";
 
 export type DetailCardProps = {
   id: string;
@@ -19,8 +20,15 @@ export type DetailCardProps = {
 };
 
 const InfoProduct = ({ name, manufacturer, price }: DetailCardProps) => {
+  const [view, setView] = useState(false);
+  const handleClick = () => {
+    setView(true);
+  };
+  const handleClose = () => {
+    setView(false);
+  };
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 relatice">
       {/* Title and Brand */}
       <div className="p-5 border-b border-gray-300">
         <h1 className="font-bold text-xl">{name}</h1>
@@ -50,9 +58,12 @@ const InfoProduct = ({ name, manufacturer, price }: DetailCardProps) => {
           </div>
         </div>
 
-        <div className="font-medium text-brand-brown-100 flex gap-2 items-center cursor-pointer drop-shadow-sm">
+        <button
+          onClick={handleClick}
+          className="font-medium text-brand-brown-100 flex gap-2 items-center cursor-pointer drop-shadow-sm"
+        >
           <div>Price Chart</div> <ListIcon size={20} />
-        </div>
+        </button>
       </div>
 
       {/* Available */}
@@ -89,6 +100,8 @@ const InfoProduct = ({ name, manufacturer, price }: DetailCardProps) => {
           Book Now
         </Button>
       </div>
+
+      {view && <PriceChart basePrice={price} onClick={handleClose} />}
     </div>
   );
 };

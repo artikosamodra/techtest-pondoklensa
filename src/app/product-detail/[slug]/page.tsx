@@ -19,7 +19,7 @@ export default async function ProductDetailPage({
   }
 
   return (
-    <Container containerClass="h-full">
+    <Container containerClass="w-full h-full flex flex-col items-center justify-center">
       <h1>Product Detail</h1>
       <ProductDetail product={product} />
     </Container>
