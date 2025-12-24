@@ -27,7 +27,7 @@ const ProductList = () => {
     <div>
       <div className="grid grid-cols-5 gap-y-5 gap-x-1">
         {limitProducts.map((product) => (
-          <Link href={`/product-detail/${product.slug}`} key={product.id}>
+          <Link href={`/${product.slug}/product-detail`} key={product.id}>
             <ProductListCard
               src={
                 product.images?.[0]?.image

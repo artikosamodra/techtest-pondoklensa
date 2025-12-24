@@ -10,6 +10,7 @@ import { formatIDR } from "@/libs/utils/format";
 import Available from "../atoms/Available";
 import Pricing from "../atoms/Pricing";
 import PriceChart from "./PriceChart";
+import Link from "next/link";
 
 export type DetailCardProps = {
   id: string;
@@ -17,9 +18,10 @@ export type DetailCardProps = {
   name: string;
   manufacturer?: string;
   price: number;
+  slug: string;
 };
 
-const InfoProduct = ({ name, manufacturer, price }: DetailCardProps) => {
+const InfoProduct = ({ name, manufacturer, price, slug }: DetailCardProps) => {
   const [view, setView] = useState(false);
   const handleClick = () => {
     setView(true);
@@ -96,9 +98,11 @@ const InfoProduct = ({ name, manufacturer, price }: DetailCardProps) => {
           <div>Add to Project</div>
           <QrCodeIcon size={20} weight="bold" />
         </Button>
-        <Button className="w-full h-full bg-white text-brand-brown-100 border-2 border-brand-brown-100 hover:bg-gray-900 hover:text-white animates">
-          Book Now
-        </Button>
+        <Link href={`/${slug}/product-booking`} className="w-full">
+          <Button className="w-full h-full bg-white text-brand-brown-100 border-2 border-brand-brown-100 hover:bg-gray-900 hover:text-white animates">
+            Book Now
+          </Button>
+        </Link>
       </div>
 
       {view && <PriceChart basePrice={price} onClick={handleClose} />}
