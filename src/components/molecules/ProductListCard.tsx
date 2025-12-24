@@ -16,7 +16,7 @@ const ProductListCard = ({
   pricedays,
 }: ProductListCardProps) => {
   return (
-    <div className="group flex flex-col items-center justify-center animates hover:shadow-lg rounded-md overflow-hidden text-center py-4 bg-white">
+    <div className="group flex flex-col items-center justify-center animates hover:bg-gray-100 hover:shadow-lg rounded-md overflow-hidden text-center py-4 bg-white">
       <div className="relative aspect-square w-full overflow-hidden">
         <Image
           src={src}

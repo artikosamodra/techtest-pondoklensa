@@ -1,7 +1,8 @@
 import React from "react";
 import Carousel from "../molecules/Carousel";
-import InfoProduct, { ProductType } from "../molecules/InfoProduct";
+import InfoProduct from "../molecules/InfoProduct";
 import Package from "../molecules/Package";
+import { ProductType } from "@/libs/type";
 
 export type ProductDetailProps = {
   product: ProductType;

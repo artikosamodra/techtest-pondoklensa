@@ -11,41 +11,9 @@ import Available from "../atoms/Available";
 import Pricing from "../atoms/Pricing";
 import PriceChart from "./PriceChart";
 import Link from "next/link";
+import { ProductType } from "@/libs/type";
 
-export type ProductImage = {
-  id: string;
-  image: string;
-  product_id?: string;
-  order?: number;
-  created_at?: string;
-  updated_at?: string;
-};
 
-export type ProductType = {
-  id: string;
-  name: string;
-  price: number;
-  slug: string;
-  images: ProductImage[];
-  manufacturer?: {
-    id?: string;
-    name: string; // Pastikan ini ada
-    slug?: string;
-  };
-  default_package?: {
-    id: string;
-    name: string;
-    components: {
-      id: string;
-      product: {
-        name: string;
-        image: {
-          image: string;
-        };
-      };
-    }[];
-  };
-};
 
 const InfoProduct = ({ name, manufacturer, price, slug }: ProductType) => {
   const [view, setView] = useState(false);

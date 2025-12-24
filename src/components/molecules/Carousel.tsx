@@ -1,11 +1,7 @@
 "use client";
+import { ProductImage } from "@/libs/type";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
-
-interface ProductImage {
-  id: string;
-  image: string;
-}
 
 const Carousel = ({ images }: { images: ProductImage[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
